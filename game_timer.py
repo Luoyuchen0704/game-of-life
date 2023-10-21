@@ -1,5 +1,5 @@
 import time
-# 定义计时类 game_timer.py
+# 定义计时类：负责时间相关功能，在适当的时机触发游戏逻辑模块对地图的更新
 class GameTimer(object):
     def __init__(self, trigger, interval):
         """将在主程序中初始化实例 计时器以interval秒的频率触发

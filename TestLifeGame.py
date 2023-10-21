@@ -1,42 +1,30 @@
 import unittest
 from unittest.mock import MagicMock
 from life_game import LifeGame
-from game_map import GameMap
 
 
 class Test_TestLifeGame(unittest.TestCase):
+    def setUp(self):
+        self.game = LifeGame(map_rows=5, map_cols=5, life_init_ratio=0.0)
+
     def test_game_cycle(self):
-       game = LifeGame(10,10,0) 
-       game.map.set(3,4,1)
-       game.map.set(4,5,1)
-       game.map.set(5,3,1)
-       game.map.set(5,4,1)
-       game.map.set(5,5,1)
+        self.game.map.set(0, 3, 1)
+        self.game.map.set(1, 1, 1)
+        self.game.map.set(1, 3, 1)
+        self.game.map.set(2, 2, 1)
+        self.game.map.set(2, 3, 1)
+        self.assertEqual(self.game.map.compare_map([[0, 0, 0, 1, 0],
+                                                    [0, 1, 0, 1, 0],
+                                                    [0, 0, 1, 1, 0],
+                                                    [0, 0, 0, 0, 0],
+                                                    [0, 0, 0, 0, 0]]), 1)
+        self.game.game_cycle()
 
-       game.map.print_map()
-       print()
-
-       game.game_cycle()
-
-       game.map.print_map()
-       print()
-
-       new_map = GameMap(10,10)
-       new_map.set(4,3,1)
-       new_map.set(4,5,1)
-       new_map.set(5,4,1)
-       new_map.set(5,5,1)
-       new_map.set(6,4,1)
-
-       new_map.print_map()
-
-       # 测试执行一次游戏循环后地图是否符合预期
-       for i in range(0,10):
-          for j in range(0,10):
-              self.assertEqual(game.map.get(i,j),new_map.get(i,j),"Should get correct game_cycle()")
+        self.assertEqual(self.game.map.compare_map([[0, 0, 1, 0, 0],
+                                                    [0, 0, 0, 1, 1],
+                                                    [0, 0, 1, 1, 0],
+                                                    [0, 0, 0, 0, 0],
+                                                    [0, 0, 0, 0, 0]]), 1)
        
-       
-       
-
 if __name__ == '__main__':
     unittest.main()

@@ -1,6 +1,6 @@
 import tkinter as tk
 import game_timer
-# 定义UI类 game_ui.py
+# 定义UI类：创建和管理图形用户界面
 class GameUI:
     def __init__(self, game, timer,w,h,a):
         """初始化UI界面"""
