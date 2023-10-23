@@ -12,4 +12,6 @@ class GameTimer(object):
         self.trigger()
         time.sleep(self.interval)
 
+   
+
 

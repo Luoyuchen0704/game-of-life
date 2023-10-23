@@ -1,5 +1,6 @@
 import tkinter as tk
 import game_timer
+
 # 定义UI类：创建和管理图形用户界面
 class GameUI:
     def __init__(self, game, timer,w,h,a):
@@ -20,17 +21,15 @@ class GameUI:
         self.canvas.delete("all")
         for row in range(self.game.map.rows):
             for col in range(self.game.map.cols):
-                state = self.game.map.get(row, col)
-                if state == 1:
+                if self.game.map.get(row, col):
                     self.canvas.create_rectangle(col*self.a, row*self.a, col*self.a+self.a, row*self.a+self.a, fill="black")
-                else:
-                    self.canvas.create_rectangle(col*self.a, row*self.a, col*self.a+self.a, row*self.a+self.a, fill="white")
+                
 
     def update(self):
         """更新UI界面"""
         self.draw()
         self.timer.start()
-        self.root.after(100, self.update)
+        self.root.after(1, self.update)
 
     def run(self):
         """运行UI界面"""

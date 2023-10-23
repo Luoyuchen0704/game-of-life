@@ -1,6 +1,5 @@
 import random
-import profile # 导入profile模块
-
+import numpy as np
 # 定义地图类:管理与地图相关一切数据的初始化、获取、更新等
 class GameMap(object):
     def __init__(self, rows, cols):
@@ -20,21 +19,14 @@ class GameMap(object):
                 else:
                     self.map[i][j] = 0
 
-    # @profile
+
     def get_neighbor_count(self, row, col):
         """获取地图上一个方格周围活细胞数"""
-        if not isinstance(row, int):
-            raise TypeError("row should be int")
-        if not isinstance(col, int):
-            raise TypeError("col should be int")
-        
         count = 0
         for i in range(-1, 2):
             for j in range(-1, 2):
-                if i == 0 and j == 0:
-                    continue
-                if self.map[(row + i) % self.rows][(col + j) % self.cols] == 1:
-                    count += 1
+                if i != 0 or j != 0:
+                    count += self.map[(row + i) % self.rows][(col + j) % self.cols]
         return count
 
     def set(self, row, col, val):
@@ -59,9 +51,6 @@ class GameMap(object):
         for i in range(0,self.rows):
            for j in range(0,self.cols):
                if self.map[i][j] != new_map[i][j] :
-                   ret = 0
-        return ret
+                   return 0
+        return 1
     
-
-if __name__ == "__main__":
-    profile.run("get_neighbor_count()")
