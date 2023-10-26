@@ -13,17 +13,18 @@ class Test_TestLifeGame(unittest.TestCase):
         self.game.map.set(1, 3, 1)
         self.game.map.set(2, 2, 1)
         self.game.map.set(2, 3, 1)
+        self.game.map.set(3, 3, 1)
         self.assertEqual(self.game.map.compare_map([[0, 0, 0, 1, 0],
                                                     [0, 1, 0, 1, 0],
                                                     [0, 0, 1, 1, 0],
-                                                    [0, 0, 0, 0, 0],
+                                                    [0, 0, 0, 1, 0],
                                                     [0, 0, 0, 0, 0]]), 1)
         self.game.game_cycle()
 
         self.assertEqual(self.game.map.compare_map([[0, 0, 1, 0, 0],
                                                     [0, 0, 0, 1, 1],
+                                                    [0, 0, 0, 1, 1],
                                                     [0, 0, 1, 1, 0],
-                                                    [0, 0, 0, 0, 0],
                                                     [0, 0, 0, 0, 0]]), 1)
        
 if __name__ == '__main__':

@@ -2,12 +2,13 @@ import game_timer
 import game_ui
 import life_game
 import cProfile
+
 # 测试
 if __name__ == '__main__':
     # 地图行数
-    rows = 10
+    rows = 100
     # 地图列数
-    cols = 10
+    cols = 100
     # 初始细胞存活率
     life_init_ratio = 0.1
     # 更新间隔
@@ -25,4 +26,4 @@ if __name__ == '__main__':
     
     """运行UI界面,传入参数为地图细胞边长"""
     ui.run()
-
+    

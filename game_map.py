@@ -1,5 +1,5 @@
 import random
-import numpy as np
+
 # 定义地图类:管理与地图相关一切数据的初始化、获取、更新等
 class GameMap(object):
     def __init__(self, rows, cols):
@@ -29,6 +29,9 @@ class GameMap(object):
                     count += self.map[(row + i) % self.rows][(col + j) % self.cols]
         return count
 
+
+
+
     def set(self, row, col, val):
         """设置地图上方格的状态"""
         self.map[row][col] = val
@@ -36,14 +39,6 @@ class GameMap(object):
     def get(self, row, col):
         """获取地图上方格的状态"""
         return self.map[row][col]
-    
-    def print_map(self):
-        """打印地图上方格的状态"""
-        for i in range(0,self.rows):
-           for j in range(0,self.cols):
-               print(self.map[i][j],end=' ')
-           print()
-        print()
 
     def compare_map(self,new_map):
         """比较地图上方格的状态"""

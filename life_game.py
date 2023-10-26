@@ -1,5 +1,5 @@
 import game_map
-import numpy as np
+
 
 # 定义生命游戏类：控制完整游戏逻辑，按照地图数据依照逻辑进行相应更新
 class LifeGame:
@@ -8,7 +8,8 @@ class LifeGame:
         self.map = game_map.GameMap(map_rows, map_cols)
         self.map.reset(life_init_ratio)
 
-        
+        self.turn_alive = []
+        self.turn_dead = []
 
     def game_cycle(self):
         
@@ -20,12 +21,21 @@ class LifeGame:
                 if self.map.get(i, j):
                     if count < 2 or count > 3:
                         new_map.set(i, j, 0)
+                        self.turn_dead.append([])
+                        self.turn_dead[-1].append(i)
+                        self.turn_dead[-1].append(j)
+                        
                     else:
                         new_map.set(i, j, 1)
                 else:
                     if count == 3:
                         new_map.set(i, j, 1)
+                        self.turn_alive.append([])
+                        self.turn_alive[-1].append(i)
+                        self.turn_alive[-1].append(j)
+                        
         self.map = new_map
+
         
         
         
